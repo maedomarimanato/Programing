@@ -142,7 +142,6 @@
     <ClCompile Include="Object\RankingData.cpp" />
     <ClCompile Include="Scene\GameMainScene.cpp" />
     <ClCompile Include="Scene\HelpScene.cpp" />
-    <ClCompile Include="Scene\InputControl.cpp" />
     <ClCompile Include="Scene\RankingDispScene.cpp" />
     <ClCompile Include="Scene\RankingInputScene.cpp" />
     <ClCompile Include="Scene\ResultScene.cpp" />
@@ -157,7 +156,6 @@
     <ClInclude Include="Object\RankingData.h" />
     <ClInclude Include="Scene\GameMainScene.h" />
     <ClInclude Include="Scene\HelpScene.h" />
-    <ClInclude Include="Scene\InputControl.h" />
     <ClInclude Include="Scene\RankingDispScene.h" />
     <ClInclude Include="Scene\RankingInputScene.h" />
     <ClInclude Include="Scene\ResultScene.h" />
