@@ -4,7 +4,7 @@
 
 Player::Player() : is_active(false), image(NULL), location(0.0f), box_size(0.0f),
 angle(0.0f),
-speed(0.0f), hp(0.0f), fuel(0.0f), barrer_count(0),
+speed(0.0f), hp(0.0f), fuel(0.0f), barrier_count(0),
 barrier(nullptr)
 {
 
@@ -19,7 +19,7 @@ void Player::Initialize()
 {
 	is_active = true;
 	location = Vector2D(320.0f, 380.0f);
-	box_size = Vector = Vector2D(31.0f, 60.0f);
+	box_size = Vector2D (31.0f, 60.0f);
 	angle = 0.0f;
 	speed = 3.0f;
 	hp = 1000;
@@ -27,12 +27,12 @@ void Player::Initialize()
 	barrier_count = 3;
 
 	//画像の読み込み
-	image = LoadGraph("Resource/image/carlpol.pug");
+	image = LoadGraph("Resource/images/carlpol.pug");
 
 	//エラーチェック
 	if (image == -1)
 	{
-		throw ("Resource/image/carlpol.bgmがありません/n");
+		throw ("Resource/images/carlpol.bgmがありません/n");
 	}
 }
 
@@ -120,15 +120,22 @@ void Player::SetActive(bool flg)
 }
 
 //体力現象処理
-void Player::Decreasehp(float value)
+void Player::DecreaseHp(float value)
+{
+	this->hp += value;
+}
+
+//位置情報取得処理
+Vector2D Player::GetLocation() const
 {
 	return this->location;
 }
 
+
 //当たり判定の大きさ取得処理
 Vector2D Player::GetBoxSize()const
 {
-	return yhis->box_size;
+	return this->box_size;
 }
 
 //速さ取得処理
@@ -138,13 +145,13 @@ float Player::GetSpeeed() const
 }
 
 //燃料取得処理
-float Player::getSpeed() const
+float Player::GetSpeed() const
 {
 	return this->speed;
 }
 
 //燃料取得処理
-float Player::getFuel() const
+float Player::GetFuel() const
 {
 	return this->fuel;
 }

@@ -28,8 +28,8 @@ void GameMainScene::Initialize()
 
 	//画像の読み込み
 	back_ground = LoadGraph("Resource/image/back.bmp");
-	barrier_image = LoandGraph("Resource/image/barrier.pug");
-	int result = LoandDivGraph("resource/image/car.bmp", 3, 3, 1, 63, 120,
+	barrier_image = LoadGraph("Resource/image/barrier.pug");
+	int result = LoadDivGraph("resource/image/car.bmp", 3, 3, 1, 63, 120,
 		enemy_image);
 
 	//エラーチェック
@@ -64,7 +64,7 @@ eSceneType GameMainScene::Update()
 	player->Update();
 
 	//移動距離の更新
-	mileage += (int)player->getSpeed
+	mileage += (int)player->GetSpeed
 	() + 5;
 
 	//敵生成処理
@@ -87,10 +87,10 @@ eSceneType GameMainScene::Update()
 	{
 		if (enemy[i] != nullptr)
 		{
-			enemy[i]->Udate(player->GetSpeed());
+			enemy[i]->Update(player->GetSpeed());
 
 			//画面外に行ったら、敵を削除してスコア加算
-			if (enemy[i]->GetLoandion().y >= 640.0f)
+			if (enemy[i]->GetLocation().y >= 640.0f)
 			{
 				enemy_count[enemy[i]->GetType()]++;
 				enemy[i]->Finalize();
@@ -102,7 +102,7 @@ eSceneType GameMainScene::Update()
 			if (IsHitCheck(player, enemy[i]))
 			{
 				player->SetActive(false);
-				player->DeceraseHp(-50.0f);
+				player->DecreasHp(-50.0f);
 				enemy[i]->Finalize();
 				delete enemy[i];
 				enemy[i] = nullptr;
@@ -111,7 +111,7 @@ eSceneType GameMainScene::Update()
 	}
 
 	//プレイヤーの燃料か体力が0未満なら、リザルトに転移する
-	if (olayer->GetFuel() < 0.0f || player->GetHp() < 0.0f)
+	if (player->GetFuel() < 0.0f || player->GetHp() < 0.0f)
 	{
 		return eSceneType::E_RESULT;
 	}
@@ -122,8 +122,8 @@ eSceneType GameMainScene::Update()
 void GameMainScene::Draw() const
 {
 	//背景画像の描画
-	DrawGraoh(0, mileage % 480 - 480, back_ground, TRUE);
-	DrawGraoh(0, mileage % 480, back_ground, TRUE);
+	DrawGraph(0, mileage % 480 - 480, back_ground, TRUE);
+	DrawGraph(0, mileage % 480, back_ground, TRUE);
 
 	//敵の描画
 	for (int i = 0; i < 10; i++)
@@ -159,7 +159,7 @@ void GameMainScene::Draw() const
 
 	//バリア枚数の描画
 	for (int i = 0; i < plyer->GetBarriarCount(); i++) {
-		DrawRotGraph(520 + i * 25, 340, 0.2f, 0, barrier_image, TRUE, FALSE);
+		DrawRotaGraph(520 + i * 25, 340, 0.2f, 0, barrier_image, TRUE, FALSE);
 	}
 
 	//燃料ゲージの描画
@@ -168,7 +168,7 @@ void GameMainScene::Draw() const
 	DrawFormatStringF(fx, fy, GetColor(0, 0, 0), "FUEL METER");
 	DrawBoxAA(fx, fy + 20.0f, fx + (player->GetFuel() * 100 / 20000), fy +
 		40.0f, GetColor(0, 102, 204), TRUE);
-	DarwBoxAA(fx, fy + 20.0f, fx + 100.0f, fy + 40.0f, GetColor(0, 0, 0),
+	DrawBoxAA(fx, fy + 20.0f, fx + 100.0f, fy + 40.0f, GetColor(0, 0, 0),
 		FALSE);
 
 	//体力ゲージの描画
@@ -182,7 +182,7 @@ void GameMainScene::Draw() const
 }
 
 //終了時処理
-void GameMainscoreScene::Finalize()
+void GameMainScene::Finalize()
 {
 	//スコアを計算する
 	int score = (mileage / 10 * 10);

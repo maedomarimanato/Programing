@@ -1,6 +1,6 @@
 #pragma once
 
-class RankingDate
+class RankingData
 {
 private:
 	int score[6]; //スコアデータ
@@ -8,15 +8,15 @@ private:
 	char name[6][15]; //名前データ
 
 public:
-	RankingDate();
-	~RankingDate();
+	RankingData();
+	~RankingData();
 
 	void Initialize(); //初期処理
 	void Finalize(); //終了処理
 
 public:
 	//ランキングデータの設定
-	void SetRankingDate(int score, const char* name);
+	void SetRankingData(int score, const char* name);
 	//スコア取得処理
 	int GetScore(int value) const;
 	//ランク取得処理
@@ -25,5 +25,5 @@ public:
 	const char* GetName(int value) const;
 private:
 	//データ入れ替え処理
-	void ScortDate();
+	void ScortData();
 };

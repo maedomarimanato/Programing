@@ -1,8 +1,8 @@
-#include"RankingDate.h"
+#include"RankingData.h"
 #include<stdio.h>
 #include<string.h>
 
-RankingDate::RankingDate()
+RankingData::RankingData()
 {
 	for (int i = 0; i < 6; i++)
 	{
@@ -16,13 +16,13 @@ RankingDate::RankingDate()
 
 }
 
-RankingDate::~RankingDate()
+RankingData::~RankingData()
 {
 
 }
 
 //初期化処理
-void rankingDate::Initialize()
+void RankingData::Initialize()
 {
 	//ランキングデータの読み込み
 	FILE* fp = nullptr;
@@ -33,7 +33,7 @@ void rankingDate::Initialize()
 	//エラーチェック
 	if (result != 0)
 	{
-		thow("Resource/dat/ranking_date.csvが開けませんでした/n");
+		throw("Resource/dat/ranking_date.csvが開けませんでした/n");
 	}
 
 	//対象ファイルから読み込む
@@ -52,40 +52,40 @@ void rankingDate::Initialize()
 }
 
 //終了処理
-void RankingDate::Finalize()
+void RankingData::Finalize()
 {
 
 }
 
 //データ設定処理
-void RankingDate::SetrankignDate(int score, const char* name)
+void RankingData::SetRankingData(int score, const char* name)
 {
 	this->score[5] = score;
 	strcpy_s(this->name[5], name);
 
-	SortDate();
+	SortData();
 }
 
 //スコア取得処理
-int RankingDate::GetScore(int value) const
+int RankingData::GetScore(int value) const
 {
 	return score[value];
 }
 
 //ランク取得処理
-int RankingDate::GetRank(int value) const
+int RankingData::GetRank(int value) const
 {
 	return rank[value];
 }
 
 //名前取得処理
-const char* RankingDtae::GetName(int value) const
+const char* RankingData::GetName(int value) const
 {
 	return name[value];
 }
 
 //データ入れ替え処理
-void RankingDate::SortDate()
+void RankingData::SortData()
 {
 	//選択法ソートを使用し、降順で入れ替える
 	for (int i = 0; i < 5; i++)
