@@ -5,24 +5,24 @@
 bool InputControl::now_button[16] = {};
 bool InputControl::old_button[16] = {};
 float InputControl::trigger[2] = {};
-Vectrol2D InputControl::stick[2] = {};
+Vector2D InputControl::stick[2] = {};
 
 //入力待機 : 更新処理
 void InputControl::Update()
 {
 	//XInputコントローラーの入力値を取得する
 	XINPUT_STATE input_state = {};
-	GetjoypadXIputState(DX_INPUT_PAD1, &input_state);
+	GetJoypadXInputState(DX_INPUT_PAD1, &input_state);
 
 	//ボタン入力値の更新
 	for (int i = 0; i < 16; i++)
 	{
-		oid_button[i] = now_button[i];
+		old_button[i] = now_button[i];
 		now_button[i] = (bool)input_state.Buttons[i];
 	}
 
 	//トリガー入力値の更新(０．０f～１．０fに範囲を制限する)
-	trigger[0] = (float)input\state.LeftTrigger / (float)UCHAR_MAX;
+	trigger[0] = (float)input_state.LeftTrigger / (float)UCHAR_MAX;
 	trigger[1] = (float)input_state.RightTrigger / (float)UCHAR_MAX;
 
 	//左スティック入力値の更新(－１．０f～１．０fに範囲を制限する)
@@ -89,13 +89,13 @@ float InputControl::GetLeftTrigger()
 }
 
 //右トリガー取得
-float InputControl;;getRightrigger()
+float InputControl;;GetRightTrigger()
 {
 	return trigger[1];
 }
 
 //左スティック取得
-Vector2D InputControl::getLeftStick()
+Vector2D InputControl::GetLeftStick()
 {
 	return stick[0];
 }

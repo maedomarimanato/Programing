@@ -2,10 +2,10 @@
 
 #include"SceneBase.h"
 
-class HelpScene : public Scene
+class HelpScene : public SceneBase
 {
 private:
-	int backraound_image;//”wŒi‰æ‘œ
+	int background_image;//”wŒi‰æ‘œ
 
 public:
 	HelpScene();

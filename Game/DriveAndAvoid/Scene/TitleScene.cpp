@@ -3,7 +3,7 @@
 #include"DxLib.h"
 
 TitleScene::TitleScene() : background_image(NULL), menu_image(NULL),
-cursor_image(NULL), meun_cursor(0)
+cursor_image(NULL), menu_cursor(0)
 {
 
 }
@@ -26,7 +26,7 @@ void TitleScene::Initialize()
 	{
 		throw("Resource/images/Title.bmpがありません/n");
 	}
-	if (menu_iamge == -1)
+	if (menu_image == -1)
 	{
 		throw("resource/images/menu.bmpがありません/n");
 	}
@@ -40,7 +40,7 @@ void TitleScene::Initialize()
 eSceneType TitleScene::Update()
 {
 	//カーソル下移動
-	if (InpuControl::GetButtonDown(XINPUT_BUTTON_DPAD_DOWN))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_DOWN))
 	{
 		menu_cursor++;
 		//１番下に到達したら、一番上にする
@@ -64,7 +64,7 @@ eSceneType TitleScene::Update()
 	//カーソル決定(決定した画面に遷移する)
 	if (InputControl::GetButtonDown(XINPUT_BUTTON_B))
 	{
-		seitch(menu_cursor)
+		switch(menu_cursor)
 		{
 		case 0:
 			return eSceneType::E_MAIN;
@@ -73,7 +73,7 @@ eSceneType TitleScene::Update()
 		case 2:
 			return eSceneType::E_HELP;
 		default:
-			return eSceneType::E_END
+			return eSceneType::E_END;
 		}
 	}
 
@@ -91,7 +91,7 @@ void TitleScene::Draw() const
 	DrawGraph(120, 200, menu_image, TRUE);
 
 	//カーソル画像の描画
-	drawRotaGraph(90, 220 + menu_cursor * 40, 0.7, DX_PI / 2.0, cursor_image,
+	DrawRotaGraph(90, 220 + menu_cursor * 40, 0.7, DX_PI / 2.0, cursor_image,
 		TRUE);
 }
 

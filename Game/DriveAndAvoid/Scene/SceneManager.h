@@ -14,12 +14,12 @@ private:
 	SceneBase* current_scene; //現在シーン
 
 public:
-	SceneManager(); //初期化処理
+	SceneManager(); 
 	~SceneManager();
 
-	void Initialize();
-	void Update();
-	void Finalize();
+	void Initialize(); //初期化処理
+	void Update();//更新処理
+	void Finalize();//終了時処理
 
 private:
 	void Draw() const; //描画処理

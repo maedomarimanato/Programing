@@ -32,7 +32,7 @@ public:
 	}
 
 
-	constVector2D operator+(const Vector2D& location)
+	const Vector2D operator+(const Vector2D& location)
 	{
 		float x = this->x + location.x;
 		float y = this->y + location.y;
@@ -42,12 +42,12 @@ public:
 		float x = this->x - location.x;
 		float y = this->y - location.y;
 
-		return Vetor2D(x, y);
+		return Vector2D(x, y);
 	}
-	const Vector2D operaor* (const float& scalar)
+	const Vector2D operator* (const float& scalar)
 	{
-		float x = this->x - location.x;
-		float y = this->y - location.y;
+		float x = this->x * location.x;
+		float y = this->y * location.y;
 
 		return Vector2D(x, y)
 	}

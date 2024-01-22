@@ -16,7 +16,7 @@ RankingDispScene::~RankingDispScene()
 void RankingDispScene::Initialize()
 {
 	//画像の読み込み
-	background_image = LoandGraph("Resource/image/Ranking.bmp");
+	background_image = LoadGraph("Resource/image/Ranking.bmp");
 
 	//エラーチェック
 	if (background_image == -1)
@@ -25,15 +25,15 @@ void RankingDispScene::Initialize()
 	}
 
 	//ランキング情報を取得
-	ranking = new RankingDate;
-	ranking->ZInitialize();
+	ranking = new RankingData;
+	ranking->Initialize();
 }
 
 //更新処理
 eSceneType RankingDispScene::Update()
 {
 	//Bボタンが押されたら、タイトルに戻る
-	if (inputControl::GetButtonDown(XINPUT_BUTTON_B))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_B))
 	{
 		return eSceneType::E_TITLE;
 	}
@@ -55,13 +55,13 @@ void RankingDispScene::Draw() const
 }
 
 //終了時処理
-void RankingDispScene::Finaalize()
+void RankingDispScene::Finalize()
 {
 	//読み込んだ画像の削除
 	DeleteGraph(background_image);
 
 	//動的メモリの開放
-	ranking->Finaalize();
+	ranking->Finalize();
 	delete ranking;
 }
 

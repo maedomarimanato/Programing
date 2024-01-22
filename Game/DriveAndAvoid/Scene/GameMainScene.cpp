@@ -238,7 +238,7 @@ eSceneType GameMainScene::GetNowScene() count
 }
 
 //ハイスコアの読み込み
-void GameMainScene::ReadHighScene()
+void GameMainScene::ReadHighScore()
 {
 	RankingData data;
 	data.Initialize();
@@ -249,7 +249,7 @@ void GameMainScene::ReadHighScene()
 }
 
 //当たり判定処理(プレイヤー敵）
-bool gameMainScene::IsHitCheck(Player* p, Enemy* e)
+bool GameMainScene::IsHitCheck(Player* p, Enemy* e)
 {
 	//プレイヤーがバリアを張っていたら、当たり判定を無視する
 	if (p->IsBarrier())
@@ -270,7 +270,7 @@ bool gameMainScene::IsHitCheck(Player* p, Enemy* e)
 	Vector2D  box_ex = p->GetBoxSize() + e->GetBoxSize();
 
 	//コリジョンデータより位置情報の差分が小さいなら、ヒット判定とする
-	return((falsf(location.x) < box_ex.x) && (fadsf(diff_location.y) <
+	return((fabsf(diff_location.x) < box_ex.x) && (fabsf(diff_location.y) <
 		box_ex.y));
 }
 

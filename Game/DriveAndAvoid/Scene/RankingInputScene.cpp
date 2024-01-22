@@ -16,7 +16,7 @@ RankingInputScene::~RankingInputScene()
 }
 
 //初期化処理
-void RankingInput = LoadGraph("resource/images/Ranking.bmp");
+void RankingInputScene = LoadGraph("resource/images/Ranking.bmp");
 
 //エラーチェック
 if (background_image == -1)
@@ -45,6 +45,7 @@ fscanf_s(fp, "%6d,/n", &score);
 
 //ファイルクローズ
 fclose(fp);
+
 }
 
 //更新処理

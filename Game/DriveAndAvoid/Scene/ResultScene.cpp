@@ -22,7 +22,7 @@ ResultScene::~ResultScene()
 void ResultScene::Initialize()
 {
 	//‰æ‘œ‚Ì“Ç‚İ‚İ
-	back_ground = LoandGraph("resource/image/back.bmp");
+	back_ground = LoadGraph("resource/image/back.bmp");
 	int result = LoadDivGraph("Resource/image/car.bmp", 3, 3, 1, 63, 120,
 		enemy_image);
 

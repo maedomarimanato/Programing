@@ -25,5 +25,5 @@ public:
 	const char* GetName(int value) const;
 private:
 	//ƒf[ƒ^“ü‚ê‘Ö‚¦ˆ—
-	void ScortData();
+	void SortData();
 };

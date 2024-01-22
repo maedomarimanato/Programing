@@ -7,7 +7,7 @@ class InputControl
 {
 private:
 	static bool now_button[16];//現在フレーム入力値
-	static bool　old_button[16]; //過去フレーム
+	static bool old_button[16]; //過去フレーム
 	static float trigger[2]; //左右トリガー入力値
 	static Vector2D stick[2]; //左右スティック入力値
 
@@ -21,9 +21,14 @@ public:
 
 	//トリガー入力取得処理
 	static float GetLeftTrigger(); //左スティック
-	static float getRightTrigger(); //右スティック
+	static float GetRightTrigger(); //右スティック
+
+	//スティック入力取得処理
+	static Vector2D GetLeftStick(); //左スティック
+	static Vector2D GetRightStick(); //左スティック
+
 
 private:
 	//ボタン配列範囲チェック
-	static bool CheckbuttonRange(int button);
+	static bool CheckButtonRange(int button);
 };

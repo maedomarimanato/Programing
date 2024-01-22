@@ -37,7 +37,7 @@ void SceneManager::Initialize()
 	}
 
 	//描画先指定処理
-	if (SetFDrawScreen(DX_SCREEN_BACK) == -1)
+	if (SetDrawScreen(DX_SCREEN_BACK) == -1)
 	{
 		throw("描画先の指定ができませんでした/n");
 	}
@@ -50,7 +50,7 @@ void SceneManager::Initialize()
 void SceneManager::Update()
 {
 	//フレーム開始時間(マイクロ秒)を取得
-	LONGLONG start_tome = GetNowHiPerFormanceCount();
+	LONGLONG start_tome = GetNowHiPerformanceCount();
 
 	//メインループ
 	while (ProcessMessage() != -1)
@@ -87,7 +87,7 @@ void SceneManager::Update()
 		}
 
 		//ESCAPEキーが押されたら、ゲームを終了する
-		if (CheckHitKey(KEY_INPUT_ESCAPE)ll
+		if (CheckHitKey(KEY_INPUT_ESCAPE) ||
 			InputControl::GetButtonUp(XINPUT_BUTTON_BACK))
 		{
 			break;
@@ -101,8 +101,8 @@ void SceneManager::Finalize()
 	//シーン情報の削除
 	if (current_scene != nullptr)
 	{
-		current_scene / > Finalize();
-		delete current_score;
+		current_scene -> Finalize();
+		delete current_scene;
 		current_scene = nullptr;
 	}
 

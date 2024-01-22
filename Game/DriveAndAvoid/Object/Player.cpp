@@ -44,7 +44,7 @@ void Player::Update()
 	{
 		angle += DX_PI_F / 24.0f;
 		speed = 1.0f;
-		if (angle >= DX_PI_F * 4.0f;)
+		if (angle >= DX_PI_F * 4.0f)
 		{
 			is_active = true;
 		}
@@ -139,7 +139,7 @@ Vector2D Player::GetBoxSize()const
 }
 
 //ë¨Ç≥éÊìæèàóù
-float Player::GetSpeeed() const
+float Player::GetSpeed() const
 {
 	return this->speed;
 }
@@ -186,7 +186,7 @@ void Player::Movement()
 		move += Vector2D(-1.0f, 0.0f);
 		angle = -DX_PI_F / 18;
 	}
-	if (INPUTControl::GetButton(XINPUT_BUTTON_DPAD_RIGHT))
+	if (InputControl::GetButton(XINPUT_BUTTON_DPAD_RIGHT))
 	{
 		move += Vector2D(1.0f, 0.0f);
 		angle = DX_PI_F / 18;
@@ -217,7 +217,7 @@ void Player::Acceleration()
 	}
 
 	//LBÉ{É^ÉìÇ™âüÇ≥ÇÍÇΩÇÁÅAâ¡ë¨Ç∑ÇÈ
-	if (inputCintrol::GetButtonDown(XINPUT_BUTON_SHOULDER) && speed <
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_RIGHT_SHOULDER) && speed <
 		10.0f)
 	{
 		speed += 1.0f;

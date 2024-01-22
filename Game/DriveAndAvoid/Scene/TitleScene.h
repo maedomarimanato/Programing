@@ -14,9 +14,9 @@ private:
 
 public:
 	TitleScene();
-	virtual~TitleScene()
+	virtual~TitleScene();
 
-		virtual void Initialize() override;
+	virtual void Initialize() override;
 	virtual eSceneType Update() override;
 	virtual void Draw() const override;
 	virtual void Finalize() override;

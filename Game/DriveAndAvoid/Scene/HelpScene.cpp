@@ -2,7 +2,7 @@
 #include"../Utility/InputControl.h"
 #include"DxLib.h"
 
-HelpScene::HelpScene() : backround_image(NULL)
+HelpScene::HelpScene() : background_image(NULL)
 {
 
 }
@@ -16,7 +16,7 @@ HelpScene::~HelpScene()
 void HelpScene::Initialize()
 {
 	//画像の読み込み
-	background_image = LoandGraph("Resource/image/Title.bmp");
+	background_image = LoadGraph("Resource/image/Title.bmp");
 
 	//エラーチェック
 	if (background_image == -1)
@@ -29,7 +29,7 @@ void HelpScene::Initialize()
 eSceneType HelpScene::Update()
 {
 	//Bボタンが押されたら、タイトルの戻る
-	if (inputControl::GetButtonDown(XINPUT_BUTTON_B))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_B))
 	{
 		return eSceneType::E_TITLE;
 	}
@@ -65,5 +65,5 @@ void HelpScene::Finalize()
 //現在のシーン情報を取得
 eSceneType HelpScene::GetNowScene() const
 {
-	return wSeneType::E_HELP;
+	return eSceneType::E_HELP;
 }
