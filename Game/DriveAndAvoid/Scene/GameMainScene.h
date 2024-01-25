@@ -16,6 +16,7 @@ private:
 	Player* player; //ƒvƒŒƒCƒ„[
 	Enemy** enemy; //“G
 
+
 public:
 	GameMainScene();
 	virtual~GameMainScene();

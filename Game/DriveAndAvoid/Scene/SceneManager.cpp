@@ -50,7 +50,7 @@ void SceneManager::Initialize()
 void SceneManager::Update()
 {
 	//フレーム開始時間(マイクロ秒)を取得
-	LONGLONG start_tome = GetNowHiPerformanceCount();
+	LONGLONG start_time = GetNowHiPerformanceCount();
 
 	//メインループ
 	while (ProcessMessage() != -1)
@@ -82,7 +82,7 @@ void SceneManager::Update()
 			//現在のシーンと次のシーンが違っていたら,切替処理を行う
 			if (next != current_scene->GetNowScene())
 			{
-				ChangScene(next);
+				ChangeScene(next);
 			}
 		}
 
@@ -150,13 +150,13 @@ void SceneManager::ChangeScene(eSceneType scene_type)
 }
 
 //シーン生成処理
-SceneBase* SceneManger::CreateScene(eSceneType scene_type)
+SceneBase* SceneManager::CreateScene(eSceneType scene_type)
 {
 	//引数(シーンタイプ)によって,生成するシーンを決定する
 
 	switch (scene_type)
 	{
-	case eScene Type::E_TITLE:
+	case eSceneType::E_TITLE:
 		return new TitleScene;
 	case eSceneType::E_MAIN:
 		return new GameMainScene;

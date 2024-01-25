@@ -145,16 +145,11 @@ float Player::GetSpeed() const
 }
 
 //”R—¿æ“¾ˆ—
-float Player::GetSpeed() const
+float Player::GetFuel() const
 {
 	return this->speed;
 }
 
-//”R—¿æ“¾ˆ—
-float Player::GetFuel() const
-{
-	return this->fuel;
-}
 
 //‘Ì—Íæ“¾ˆ—
 float Player::GetHp() const
@@ -200,7 +195,7 @@ void Player::Movement()
 
 	//‰æ–ÊŠO‚És‚©‚È‚¢‚æ‚¤‚É§ŒÀ‚·‚é
 	if ((location.x < box_size.x) || (location.x >= 640.0f - 180.0f) ||
-		(location.y < box_size.y) || (location.y >= 480.0f - box_size.y))
+		 (location.y < box_size.y) || (location.y >= 480.0f - box_size.y))
 	{
 		location -= move;
 	}

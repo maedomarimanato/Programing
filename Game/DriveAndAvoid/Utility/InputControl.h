@@ -27,7 +27,7 @@ public:
 	static Vector2D GetLeftStick(); //左スティック
 	static Vector2D GetRightStick(); //左スティック
 
-
+	
 private:
 	//ボタン配列範囲チェック
 	static bool CheckButtonRange(int button);

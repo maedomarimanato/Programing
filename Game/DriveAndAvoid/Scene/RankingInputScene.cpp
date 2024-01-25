@@ -2,9 +2,9 @@
 #include"../Utility/InputControl.h"
 #include"DxLib.h"
 
-RankingInputScene::RankingInputScene() : backound_image(NULL),
+RankingInputScene::RankingInputScene() : background_image(NULL),
 ranking(nullptr),score(0),
-name_num(0),cursor_x(0).
+name_num(0),cursor_x(0),
 cursor_y(0)
 {
 	memset(name, NULL, (sizeof(char) * 15));
@@ -16,7 +16,10 @@ RankingInputScene::~RankingInputScene()
 }
 
 //初期化処理
-void RankingInputScene = LoadGraph("resource/images/Ranking.bmp");
+void RankingInputScene::Initialize()
+{
+	//画像の読み込み
+	background_image = LoadGraph("Resource/image/Ranking.bmp");
 
 //エラーチェック
 if (background_image == -1)
@@ -45,11 +48,11 @@ fscanf_s(fp, "%6d,/n", &score);
 
 //ファイルクローズ
 fclose(fp);
-
 }
 
+
 //更新処理
-eSceneTypee RankingInputScene::Update()
+eSceneType RankingInputScene::Update()
 {
 	bool is_change = false;
 
@@ -72,11 +75,11 @@ eSceneTypee RankingInputScene::Update()
 void RankingInputScene::Draw() const
 {
 	//背景画像の描画
-	drawGraph(0, 0, backround_image, TRUE);
+	DrawGraph(0, 0, background_image, TRUE);
 
 	//名前入力指示文字列の描画
 	DrawString(150, 100, "ランキングに登録します", 0xffffff);
-	DrawFormatString(100, 220, getColor(255, 255, 255), ">%s", name);
+	DrawFormatString(100, 220, GetColor(255, 255, 255), ">%s", name);
 
 	//選択用文字を描画
 	const int font_size = 25;
@@ -84,7 +87,7 @@ void RankingInputScene::Draw() const
 	{
 		int x = (i % 13) * font_size + 15;
 		int y = (i - 13) * font_size + 300;
-		DrawFormatString(x, y, getColor(255, 255, 255), "%-3c", 'a' + 1);
+		DrawFormatString(x, y, GetColor(255, 255, 255), "%-3c", 'a' + 1);
 		y = ((i / 13) + 2) * font_size + 300;
 		DrawFormatString(x, y, GetColor(255, 255, 255), "%-3c", 'A' + i);
 	}
@@ -121,23 +124,23 @@ void RankingInputScene::Finalize()
 	ranking->SetRankingData(score, name);
 
 	//読み込んだ画像を削除
-	DeletGraph(backround_image);
+	DeleteGraph(background_image);
 
 	//動的メモリの開放
 	delete ranking;
 }
 
 //現在のシーン情報を取得
-wSceneType RankingInputScene::GetNowScene() const
+eSceneType RankingInputScene::GetNowScene() const
 {
-	return eScene eSceneType::E_RANKKING_INPUT;
+	return eSceneType::E_RANKING_INPUT;
 }
 
 //名前入力処理
-bool rankingInputScene::InputName()
+bool RankingInputScene::InputName()
 {
 	//カーソル操作処理
-	if (InputControl::getButtonDown(XINPUT_BUTTON_DPAD_LEFT))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_LEFT))
 	{
 		if (cursor_x > 0)
 		{
@@ -183,7 +186,7 @@ bool rankingInputScene::InputName()
 				cursor_y = 4;
 			}
 		}
-		else if (cursor_ < 4)
+		else if (cursor_y < 4)
 		{
 			name[name_num++] = 'A' + ((cursor_y - 2) * 13);
 			if (name_num == 14)

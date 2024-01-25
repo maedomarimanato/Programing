@@ -2,7 +2,7 @@
 
 #include"SceneBase.h"
 
-class Resultscene : public SceneBase
+class ResultScene : public SceneBase
 {
 private:
 	int back_ground; //”wŒi‰æ‘œ
@@ -12,14 +12,14 @@ private:
 
 public:
 	ResultScene();
-	virtual ~RankinginputScene();
+	virtual ~ResultScene();
 
-	virtual void Initialize() overrids;
-	virtual eSceneType Update() overrids;
-	virtual void Draw() const overrids;
-	virtual void Finalize() overrids;
+	virtual void Initialize() override;
+	virtual eSceneType Update() override;
+	virtual void Draw() const override;
+	virtual void Finalize() override;
 
-	virtual eSceneType GetNowScene() const overrids;
+	virtual eSceneType GetNowScene() const override;
 
 private:
 	void ReadResultData();

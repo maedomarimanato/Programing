@@ -36,7 +36,7 @@ void InputControl::Update()
 	}
 	if (input_state.ThumbLY > 0.0f)
 	{
-		stick[0].y = (float)input_state.ThumbLY / (float)_MAX;
+		stick[0].y = (float)input_state.ThumbLY / (float)SHRT_MAX;
 	}
 	else
 	{
@@ -89,7 +89,7 @@ float InputControl::GetLeftTrigger()
 }
 
 //右トリガー取得
-float InputControl;;GetRightTrigger()
+float InputControl:: GetRightTrigger()
 {
 	return trigger[1];
 }
@@ -107,7 +107,7 @@ Vector2D InputControl::GetRightStick()
 }
 
 //ボタン配列範囲チェック
-bool InputControl::Checkbuttonrange(int button)
+bool InputControl::CheckButtonRange(int button)
 {
 	return(0 <= button && button < 16);
 }

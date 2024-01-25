@@ -1,7 +1,7 @@
 #pragma once
 
 //シーン情報
-enemy eSceneType
+enum eSceneType
 {
 	E_TITLE,
 	E_MAIN,
@@ -22,15 +22,15 @@ public:
 	//初期化処理
 	virtual void Initialize(){}
 	//更新処理
-	virtal eSceneType Update()
+	virtual eSceneType Update()
 	{
 		return GetNowScene();
 	}
 	//描画処理
-	virtal void Draw() const{}
+	virtual void Draw() const{}
 	//終了時処理
-	virtal void Finalize(){}
+	virtual void Finalize(){}
 
 	//現在のシーン情報を取得
-	virtal eSceneType getNpwScene() const = 0;
+	virtual eSceneType GetNowScene() const = 0;
 };
