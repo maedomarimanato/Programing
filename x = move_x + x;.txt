@@ -1,0 +1,5 @@
+x = move_x + x;
+	y = move_y + y;
+	xx = move_x + x;
+	yy = move_y + y;
+	Move();

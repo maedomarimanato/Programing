@@ -28,12 +28,12 @@ void RankingData::Initialize()
 	FILE* fp = nullptr;
 
 	//ファイルオープン
-	errno_t result = fopen_s(&fp, "Resource/dat/ranking_date.csv", "r");
+	errno_t result = fopen_s(&fp, "Resource/dat/ranking_data.csv", "r");
 
 	//エラーチェック
 	if (result != 0)
 	{
-		throw("Resource/dat/ranking_date.csvが開けませんでした/n");
+		throw("Resource/dat/ranking_data.csvが開けませんでした/n");
 	}
 
 	//対象ファイルから読み込む
@@ -48,7 +48,7 @@ void RankingData::Initialize()
 	//末尾データの設定
 	score[5] = 0;
 	rank[5] = 0;
-	name[5][0] = '/n';
+	name[5][0] = '/0';
 }
 
 //終了処理
@@ -126,12 +126,12 @@ void RankingData::SortData()
 	FILE* fp = nullptr;
 
 	//ファイルオープン
-	errno_t result = fopen_s(&fp, "Resource/dat/ranking_date.csv", "w");
+	errno_t result = fopen_s(&fp, "Resource/dat/ranking_data.csv", "w");
 
 	//エラーチェック
 	if (result != 0)
 	{
-		throw("Resource/dat/ranking_date.csvが開けませんでした/n");
+		throw("Resource/dat/ranking_data.csvが開けませんでした/n");
 	}
 
 	//対象ファイルに書き込み

@@ -27,12 +27,12 @@ void Player::Initialize()
 	barrier_count = 3;
 
 	//画像の読み込み
-	image = LoadGraph("Resource/images/carlpol.pug");
+	image = LoadGraph("Resource/images/car1pol.bmp");
 
 	//エラーチェック
 	if (image == -1)
 	{
-		throw ("Resource/images/carlpol.bgmがありません/n");
+		throw ("Resource/images/car1pol.bmpがありません/n");
 	}
 }
 
@@ -188,6 +188,10 @@ void Player::Movement()
 	}
 	if (InputControl::GetButton(XINPUT_BUTTON_DPAD_UP))
 	{
+		move += Vector2D(0.0f, -1.0f);
+	}
+	if (InputControl::GetButton(XINPUT_BUTTON_DPAD_DOWN))
+	{
 		move += Vector2D(0.0f, 1.0f);
 	}
 
@@ -195,7 +199,7 @@ void Player::Movement()
 
 	//画面外に行かないように制限する
 	if ((location.x < box_size.x) || (location.x >= 640.0f - 180.0f) ||
-		 (location.y < box_size.y) || (location.y >= 480.0f - box_size.y))
+		(location.y < box_size.y) || (location.y >= 480.0f - box_size.y))
 	{
 		location -= move;
 	}
@@ -211,7 +215,7 @@ void Player::Acceleration()
 		speed -= 1.0f;
 	}
 
-	//LBボタンが押されたら、加速する
+	//RBボタンが押されたら、加速する
 	if (InputControl::GetButtonDown(XINPUT_BUTTON_RIGHT_SHOULDER) && speed <
 		10.0f)
 	{

@@ -21,7 +21,6 @@ public:
 	{
 
 	}
-
 public:
 	//演算子オーバーロード
 	Vector2D& operator=(const  Vector2D& location)
@@ -33,7 +32,7 @@ public:
 	}
 
 
-	const  Vector2D operator + (const  Vector2D& location)
+	const  Vector2D operator+ (const  Vector2D& location)
 	{
 		float x = this->x + location.x;
 		float y = this->y + location.y;
@@ -70,7 +69,7 @@ public:
 
 		return  Vector2D(this->x / scalar, this->y / scalar);
 	}
-	const  Vector2D operator/(const  Vector2D& location)
+	const  Vector2D operator / (const  Vector2D& location)
 	{
 		if (location.x < 1e-6f)
 		{
@@ -90,7 +89,7 @@ public:
 
 		return*this;
 	}
-	Vector2D& opearator-=(const  Vector2D & location)
+	Vector2D& operator-=(const  Vector2D & location)
 	{
 		this->x -= location.x;
 		this->y -= location.y;
@@ -113,7 +112,7 @@ public:
 	}
 	Vector2D& operator/=(const float& scalar)
 	{
-		if (scalar < 1e - 6f)
+		if (scalar<1e-6f)
 		{
 			this->x = 0.0f;
 			this->y = 0.0f;
@@ -128,12 +127,12 @@ public:
 	}
 	Vector2D& operator/=(const  Vector2D& location)
 	{
-		if (location.x < 1e - 6f)
+		if (location.x<1e-6f)
 		{
 			this->x = 0.0f;
 			this->y = 0.0f;
 		}
-		else if (location.y < 1e - 6f)
+		else if (location.y<1e-6f)
 		{
 			this->x = 0.0f;
 			this->y = 0.0f;

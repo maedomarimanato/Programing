@@ -17,9 +17,9 @@ TitleScene::~TitleScene()
 void TitleScene::Initialize()
 {
 	//画像の読み込み
-	background_image = LoadGraph("resource/images/Title.bmp");
+	background_image = LoadGraph("Resource/images/Title.bmp");
 	menu_image = LoadGraph("Resource/images/menu.bmp");
-	cursor_image = LoadGraph("resource/images/cone.bmp");
+	cursor_image = LoadGraph("Resource/images/cone.bmp");
 
 	//エラーチェック
 	if (background_image == -1)
@@ -28,11 +28,11 @@ void TitleScene::Initialize()
 	}
 	if (menu_image == -1)
 	{
-		throw("resource/images/menu.bmpがありません/n");
+		throw("Resource/images/menu.bmpがありません/n");
 	}
 	if (cursor_image == -1)
 	{
-		throw("resource/images/cone.bmpがありません/n");
+		throw("Resource/images/cone.bmpがありません/n");
 	}
 }
 

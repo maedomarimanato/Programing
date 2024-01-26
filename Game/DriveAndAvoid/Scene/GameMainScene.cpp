@@ -28,8 +28,8 @@ void GameMainScene::Initialize()
 
 	//画像の読み込み
 	back_ground = LoadGraph("Resource/images/back.bmp");
-	barrier_image = LoadGraph("Resource/images/barrier.pug");
-	int result = LoadDivGraph("resource/images/car.bmp", 3, 3, 1, 63, 120,
+	barrier_image = LoadGraph("Resource/images/barrier.png");
+	int result = LoadDivGraph("Resource/images/car.bmp", 3, 3, 1, 63, 120,
 		enemy_image);
 
 	//エラーチェック
@@ -40,11 +40,11 @@ void GameMainScene::Initialize()
 
 	if (result == -1)
 	{
-		throw("Resource/images/barrier.pugがありません/n");
+		throw("Resource/images/car.bmpがありません/n");
 	}
 	if (barrier_image == -1)
 	{
-		throw("Resource/images/barrier.pugがありません/n");
+		throw("Resource/images/barrier.pngがありません/n");
 	}
 
 
@@ -157,7 +157,8 @@ void GameMainScene::Draw() const
 			DrawFormatString(510 + (i * 50), 140, GetColor(255, 255, 255), "%03d",
 				enemy_count[i]);
 		}
-		DrawFormatString(510, 200, GetColor(255, 255, 255), "%08d", mileage / 10);
+		DrawFormatString(510, 200, GetColor(0, 0, 0), "走行距離");
+		DrawFormatString(510, 220, GetColor(255, 255, 255), "%08d", mileage / 10);
 		DrawFormatString(510, 240, GetColor(0, 0, 0), "スピード");
 	DrawFormatString(555, 260, GetColor(255, 255, 255), "%08.1f",
 		player->GetSpeed());
@@ -179,7 +180,7 @@ void GameMainScene::Draw() const
 	//体力ゲージの描画
 	fx = 510.0f;
 	fy = 430.0f;
-	DrawFormatString(fx, fy, GetColor(0, 0, 0), "PLAYER HP");
+	DrawFormatStringF(fx, fy, GetColor(0, 0, 0), "PLAYER HP");
 	DrawBoxAA(fx, fy + 20.0f, fx + (player->GetHp() * 100 / 1000), fy + 40.0f,
 		GetColor(255, 0, 0), TRUE);
 	DrawBoxAA(fx, fy + 20.0f, fx + 100.0f, fy + 40.0f, GetColor(0, 0, 0),
@@ -233,7 +234,7 @@ void GameMainScene::Finalize()
 		}
 	}
 
-	delete[]enemy;
+	delete[] enemy;
 }
 
 //現在のシーン情報を取得

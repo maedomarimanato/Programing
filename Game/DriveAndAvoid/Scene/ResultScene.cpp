@@ -22,18 +22,18 @@ ResultScene::~ResultScene()
 void ResultScene::Initialize()
 {
 	//画像の読み込み
-	back_ground = LoadGraph("resource/image/back.bmp");
-	int result = LoadDivGraph("Resource/image/car.bmp", 3, 3, 1, 63, 120,
+	back_ground = LoadGraph("Resource/images/back.bmp");
+	int result = LoadDivGraph("Resource/images/car.bmp", 3, 3, 1, 63, 120,
 		enemy_image);
 
 	//エラーチェック
 	if (back_ground == -1)
 	{
-		throw("Resource/image/back.bmpがありません/n");
+		throw("Resource/images/back.bmpがありません/n");
 	}
 	if (result == -1)
 	{
-		throw("resource/image/csv.bmpaがありません/n");
+		throw("resource/images/csv.bmpaがありません/n");
 	}
 
 	//ゲーム結果の読み込み
@@ -88,6 +88,12 @@ void ResultScene::Finalize()
 	{
 		DeleteGraph(enemy_image[i]);
 	}
+}
+
+//現在のシーンを情報取得
+eSceneType ResultScene::GetNowScene() const
+{
+	return eSceneType::E_RESULT;
 }
 
 //リザルトデータの読み込み

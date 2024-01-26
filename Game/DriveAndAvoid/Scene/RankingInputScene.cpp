@@ -19,7 +19,7 @@ RankingInputScene::~RankingInputScene()
 void RankingInputScene::Initialize()
 {
 	//画像の読み込み
-	background_image = LoadGraph("Resource/image/Ranking.bmp");
+	background_image = LoadGraph("Resource/images/Ranking.bmp");
 
 //エラーチェック
 if (background_image == -1)
@@ -78,7 +78,7 @@ void RankingInputScene::Draw() const
 	DrawGraph(0, 0, background_image, TRUE);
 
 	//名前入力指示文字列の描画
-	DrawString(150, 100, "ランキングに登録します", 0xffffff);
+	DrawString(150, 100, "ランキングに登録します", 0xFFFFFF);
 	DrawFormatString(100, 220, GetColor(255, 255, 255), ">%s", name);
 
 	//選択用文字を描画
@@ -86,8 +86,8 @@ void RankingInputScene::Draw() const
 	for (int i = 0; i < 26; i++)
 	{
 		int x = (i % 13) * font_size + 15;
-		int y = (i - 13) * font_size + 300;
-		DrawFormatString(x, y, GetColor(255, 255, 255), "%-3c", 'a' + 1);
+		int y = (i / 13) * font_size + 300;
+		DrawFormatString(x, y, GetColor(255, 255, 255), "%-3c", 'a' + i);
 		y = ((i / 13) + 2) * font_size + 300;
 		DrawFormatString(x, y, GetColor(255, 255, 255), "%-3c", 'A' + i);
 	}
@@ -155,11 +155,18 @@ bool RankingInputScene::InputName()
 	{
 		if (cursor_x < 12)
 		{
-			cursor_x;
+			cursor_x++;
 		}
 		else
 		{
 			cursor_x = 0;
+		}
+	}
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_UP))
+	{
+		if (cursor_y > 0)
+		{
+			cursor_y--;
 		}
 	}
 	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_DOWN))
@@ -188,7 +195,7 @@ bool RankingInputScene::InputName()
 		}
 		else if (cursor_y < 4)
 		{
-			name[name_num++] = 'A' + ((cursor_y - 2) * 13);
+			name[name_num++] = 'A' +cursor_x+ ((cursor_y - 2) * 13);
 			if (name_num == 14)
 			{
 				cursor_x = 0;

@@ -1,0 +1,10 @@
+int mouse_x;
+		GetMousePoint(&mouse_x, NULL);
+		p_bar->SetLocation((float)mouse_x, 420.0f);
+
+		ClearDrawScreen();
+
+		p_ball->Draw();
+		p_bar->Draw();
+
+		ScreenFlip();

@@ -1,0 +1,34 @@
+
+	Ball* p_ball = new Ball;
+	Ball* p_ball2 = new Ball;
+	
+	
+
+	while (ProcessMessage() != -1)
+	{
+		p_ball->Update();
+		p_ball2->Update();
+
+		int mouse_x;
+
+		GetMousePoint(&mouse_x, NULL);
+
+		
+
+		ClearDrawScreen();
+
+		p_ball->Draw();
+		p_ball2->Draw();
+
+		ScreenFlip();
+
+	}
+
+	delete p_ball;
+	delete p_ball2;
+
+	//Dxライブラリ使用の終了処理
+	DxLib_End();
+
+	return 0;
+}
