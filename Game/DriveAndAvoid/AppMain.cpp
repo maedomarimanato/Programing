@@ -19,7 +19,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		//シーンマネージャー機能の更新処理
 		manager.Update();
-
+		
 		//シーンマネージャー機能の終了時処理
 		manager.Finalize();
 	}

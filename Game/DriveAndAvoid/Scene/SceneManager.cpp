@@ -58,7 +58,7 @@ void SceneManager::Update()
 		//現在時間を取得
 		LONGLONG now_time = GetNowHiPerformanceCount();
 
-		//1フレーム当たりの時間に達したら、更新およびびょいうが処理を行う
+		//1フレーム当たりの時間に達したら、更新および描画処理を行う
 		if ((now_time - start_time) >= DELTA_SECOND)
 		{
 			//フレーム開始時間を更新する

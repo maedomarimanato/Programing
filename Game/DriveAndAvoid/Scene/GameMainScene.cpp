@@ -69,7 +69,7 @@ eSceneType GameMainScene::Update()
 	player->Update();
 
 	//ˆÚ“®‹——£‚ÌXV
-	mileage += (int)player->GetSpeed
+	mileage+= (int)player->GetSpeed
 	() + 5;
 
 	//“G¶¬ˆ—

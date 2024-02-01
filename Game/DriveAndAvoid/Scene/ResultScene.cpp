@@ -33,7 +33,7 @@ void ResultScene::Initialize()
 	}
 	if (result == -1)
 	{
-		throw("resource/images/csv.bmpaがありません/n");
+		throw("Resource/images/car.bmpがありません/n");
 	}
 
 	//ゲーム結果の読み込み
@@ -90,7 +90,7 @@ void ResultScene::Finalize()
 	}
 }
 
-//現在のシーンを情報取得
+//現在のシーン情報を取得
 eSceneType ResultScene::GetNowScene() const
 {
 	return eSceneType::E_RESULT;
@@ -101,7 +101,7 @@ void ResultScene::ReadResultData()
 {
 	//ファイルオープン
 	FILE* fp = nullptr;
-	errno_t result = fopen_s(&fp, "resource/dat/result_data.csv", "r");
+	errno_t result = fopen_s(&fp, "Resource/dat/result_data.csv", "r");
 
 	//エラーチェック
 	if (result != 0)
