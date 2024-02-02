@@ -98,10 +98,10 @@ void RankingData::SortData()
 				score[i] = score[j];
 				score[j] = tmp;
 
-				char but[15] = {};
-				strcpy_s(but, name[i]);
+				char buf[15] = {};
+				strcpy_s(buf, name[i]);
 				strcpy_s(name[i], name[j]);
-				strcpy_s(name[j], but);
+				strcpy_s(name[j], buf);
 			}
 		}
 	}
