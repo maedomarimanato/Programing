@@ -1,12 +1,2 @@
-﻿  Barrier.cpp
-  Player.cpp
-  RankingData.cpp
-  GameMainScene.cpp
-  HelpScene.cpp
-  RankingDispScene.cpp
-  RankingInputScene.cpp
-  ResultScene.cpp
-  SceneManager.cpp
-  TitleScene.cpp
-  コードを生成中...
+﻿  RankingInputScene.cpp
   DriveAndAvoid.vcxproj -> C:\PG\Programing\Game\x64\Debug\DriveAndAvoid.exe
