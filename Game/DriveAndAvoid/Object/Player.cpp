@@ -147,7 +147,7 @@ float Player::GetSpeed() const
 //”R—¿Žæ“¾ˆ—
 float Player::GetFuel() const
 {
-	return this->speed;
+	return this->fuel;
 }
 
 
