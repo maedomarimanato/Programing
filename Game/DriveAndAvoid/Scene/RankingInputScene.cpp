@@ -24,7 +24,7 @@ void RankingInputScene::Initialize()
 //エラーチェック
 if (background_image == -1)
 {
-	throw("Resource/images/Ranking.bmpがありません/n");
+	throw("Resource/images/Ranking.bmpがありません\n");
 }
 
 //メモリの動的確保
@@ -40,11 +40,11 @@ errno_t result = fopen_s(&fp, "Resource/dat/result_data.csv", "r");
 //エラーチェック
 if (result != 0)
 {
-	throw("Resource/dat/result_data.csvが読み込めません/n");
+	throw("Resource/dat/result_data.csvが読み込めません\n");
 }
 
 //結果を読み込む
-fscanf_s(fp, "%6d,/n", &score);
+fscanf_s(fp, "%6d,\n", &score);
 
 //ファイルクローズ
 fclose(fp);
@@ -206,7 +206,7 @@ bool RankingInputScene::InputName()
 		{
 			if (cursor_x == 0)
 			{
-				name[name_num] = '/0';
+				name[name_num] = '\0';
 				return true;
 			}
 			else

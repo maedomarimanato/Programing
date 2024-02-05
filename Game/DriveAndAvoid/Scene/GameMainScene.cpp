@@ -35,16 +35,16 @@ void GameMainScene::Initialize()
 	//エラーチェック
 	if (back_ground == -1)
 	{
-		throw("Resource/images/back.bmpがありません/n");
+		throw("Resource/images/back.bmpがありません\n");
 	}
 
 	if (result == -1)
 	{
-		throw("Resource/images/car.bmpがありません/n");
+		throw("Resource/images/car.bmpがありません\n");
 	}
 	if (barrier_image == -1)
 	{
-		throw("Resource/images/barrier.pngがありません/n");
+		throw("Resource/images/barrier.pngがありません\n");
 	}
 
 
@@ -205,16 +205,16 @@ void GameMainScene::Finalize()
 		//エラーチェック
 		if (result != 0)
 		{
-			throw("Resource/dat/result_data.csvが開けません/n");
+			throw("Resource/dat/result_data.csvが開けません\n");
 		}
 
 	//スコアを保存
-	fprintf(fp, "%d,/n", score);
+	fprintf(fp, "%d,\n", score);
 
 	//避けた数と得点を保存
 	for (int i = 0; i < 3; i++)
 	{
-		fprintf(fp, "%d,/n", enemy_count[i]);
+		fprintf(fp, "%d,\n", enemy_count[i]);
 	}
 
 	//ファイルクローズ
